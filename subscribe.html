@@ -3,10 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I'm a subscribe form!</title>
-    <h1>Try again</h1>
+    <link rel="stylesheet" href="styling.css">
 </head>
-<body>
+
+<!-- Doing it as a JS script, since can't display a message by just doing CSS -->
+<script>
+    const email_field = document.getElementById("email");
+    const fname_field = document.getElementById("fname");
+    const lname_field = document.getElementById("lname");
+
+    const emailError = document.getElementById("eerror");
+    const fnameError = document.getElementById("ferror");
+    const lnameError = document.getElementById("lerror");
+
     
+
+    fname_field.addEventListener("input", (event) => {
+        
+        if(fname_field.validity.tooLong || fname_field.validity.tooShort){
+            console.log("Hello");
+            fnameError.text = "The First Name entered either too short or too long";
+            fnameError.className = "error";
+        } else if(fname_field.validity.patternMismatch) {
+            fnameError.text = "Only lower and upper-case letters are allowed";
+            fnameError.className = "error";
+        } else {
+            fnameError.text = "";
+        }
+    });
+
+    lname_field.addEventListener("input", (event) => {
+        if(lname_field.validity.tooLong || lname_field.validity.tooShort){
+            lnameError.text = "The Last Name entered either too short or too long";
+            lnameError.className = "error";
+        } else if(lname_field.validity.patternMismatch) {
+            lnameError.text = "Only lower and upper-case letters are allowed";
+            lnameError.className = "error";
+        } else {
+            lnameError.text = "";
+        }
+    });
+
+    
+</script>
+<body>
+
+    <!-- HERE GOES NAVBAR -->
+    <secton>
+        <!-- HERE GOES IMAGE AND SIGN UP INFO TEXT -->
+    </secton>
+    
+    <section>
+        <form>
+            <label for="nametitle">Title: </label>
+            <select name="nametitle" id="nametitle" required>
+                <option>Mx</option>
+                <option>Mr</option>
+                <option>Miss</option>
+                <option>Ms</option>
+                <option>Mrs</option>
+                <option>Dr</option>
+                <option>Sir</option>
+                <option>Dame</option>
+                <option>Lord</option>
+                <option>Lady</option>
+            </select>
+
+            <label for="fname">First Name:
+                <input type="text" id="fname" name="fname" minlength="1" maxlength="15" pattern="[A-Z][a-z]*" required><br>
+                <p id="ferror" class="error"></p>
+            </label>
+
+            <label for="lname">Last Name: 
+                <input type="text" id="lname" name="lname" minlength="1" maxlength="15" pattern="[A-Z][a-z]*" required><br>
+                <p id="lerror" class="error"></p>
+            </label>
+
+            <label for="email">Email:
+                <input type="email" id="email" name="email" required><br>
+                <p id="eerror" class="error"></p>
+            </label>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone"><br>
+            
+            <label for="male">Male</label>
+            <input type="radio" id="male" name="gender" value="Male"><br>
+
+            <label for="female">Female</label>
+            <input type="radio" id="female" name="gender" value="Female"><br>
+
+            <label for="nonb">Nonbinary</label>
+            <input type="radio" id="nonb" name="gender" value="Nonbinary"><br>
+
+            <label for="nosay">Prefer not to say</label>
+            <input type="radio" id="nosay" name="gender" value="Prefer not to say"><br>
+            
+            <input type="submit">
+        </form>
+    </section>
+
+
+    <!-- HERE GOES FOOTER -->
 </body>
 </html>

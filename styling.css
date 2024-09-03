@@ -35,3 +35,8 @@
     color: #ddd;
 }
 /* colour of the mouse/cursor over the text, the colour will change to grey */
+
+input:invalid {
+    border-color: #900;
+}
+  
