@@ -36,6 +36,11 @@
 }
 /* colour of the mouse/cursor over the text, the colour will change to grey */
 
+input:invalid {
+    border-color: #900;
+}
+  
+
 /* SkyCinema image on the Schedule page */
 #skyCinema{
     margin-top: 2%;
