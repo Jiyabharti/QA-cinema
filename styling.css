@@ -1,5 +1,5 @@
 .navbar {
-    background-color:	#AA336A;
+    background-color:	#c0b8bb;
     padding: 10px;
 }
 
@@ -9,18 +9,29 @@
     padding: 0;
     text-align: center;
 }
+/* list style type - this removes the bullet points */
+/* margin 0 removes the margin around the list*/
+/* text-align centers the text */
+
+
 
 .navbar ul li {
     display: inline;
     margin-right: 20px;
 }
+/* The wireframe showed the nabvar as a horizontal frame */
+/* display - incline ensures that the text is horizontal */
 
 .navbar ul li a {
     text-decoration: none;
     color: black;
     font-weight: bold;
 }
+/* sets the colour of the links to black */
+/* text decoration - none means that no underline will appear on the link */
+/* font weight - makes the font bold */
 
 .navbar ul li a:hover {
     color: #ddd;
 }
+/* colour of the mouse/cursor over the text, the colour will change to grey */
