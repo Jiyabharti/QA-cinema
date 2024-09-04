@@ -4,48 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styling.css">
+
+    <script>
+        
+    
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log("Loading DOM");
+            const email_field = document.getElementById("email");
+            const fname_field = document.getElementById("fname");
+            const lname_field = document.getElementById("lname");
+    
+            const emailError = document.getElementById("eerror");
+            const fnameError = document.getElementById("ferror");
+            const lnameError = document.getElementById("lerror");
+
+            fname_field.addEventListener("input", (event) => {
+                
+                //when the input is too short (no need to check for too long, as HTML maxlength doesn't allow to type more even when CTRL-V)
+                if(fname_field.textContent.length < 1){
+                    console.log("Too long/too short");
+                    fnameError.textContent = "The First Name entered is too short";
+                    fnameError.className = "error";
+                }
+
+                //when the input doesn't start with uppercase letters and then only contains lowercase letters and nothing else 
+                if(fname_field.validity.patternMismatch) {
+                    console.log("Pattern mismatch");
+                    fnameError.textContent = "Only lower and upper-case letters are allowed";
+                    fnameError.className = "error";
+                }
+
+                //reset error when field becomes valid
+                if(fname_field.validity.valid){
+                    fnameError.textContent = "";
+                }    
+            });
+            
+            lname_field.addEventListener("input", (event) => {
+                //when the input is too short (no need to check for too long, as HTML maxlength doesn't allow to type more even when CTRL-V)
+                if(lname_field.textContent.length < 1){
+                    console.log("Too long/too short");
+                    lnameError.textContent = "The Last Name entered is too short";
+                    lnameError.className = "error";
+                }
+
+                //when the input doesn't start with uppercase letters and then only contains lowercase letters and nothing else 
+                if(lname_field.validity.patternMismatch) {
+                    console.log("Pattern mismatch");
+                    lnameError.textContent = "Only lower and upper-case letters are allowed";
+                    lnameError.className = "error";
+                }
+
+                //reset error when field becomes valid
+                if(lname_field.validity.valid){
+                    lnameError.textContent = "";
+                }    
+            });
+        });
+    
+        
+    
+        
+    </script>
 </head>
 
 <!-- Doing it as a JS script, since can't display a message by just doing CSS -->
-<script>
-    const email_field = document.getElementById("email");
-    const fname_field = document.getElementById("fname");
-    const lname_field = document.getElementById("lname");
 
-    const emailError = document.getElementById("eerror");
-    const fnameError = document.getElementById("ferror");
-    const lnameError = document.getElementById("lerror");
-
-    
-
-    fname_field.addEventListener("input", (event) => {
-        
-        if(fname_field.validity.tooLong || fname_field.validity.tooShort){
-            console.log("Hello");
-            fnameError.text = "The First Name entered either too short or too long";
-            fnameError.className = "error";
-        } else if(fname_field.validity.patternMismatch) {
-            fnameError.text = "Only lower and upper-case letters are allowed";
-            fnameError.className = "error";
-        } else {
-            fnameError.text = "";
-        }
-    });
-
-    lname_field.addEventListener("input", (event) => {
-        if(lname_field.validity.tooLong || lname_field.validity.tooShort){
-            lnameError.text = "The Last Name entered either too short or too long";
-            lnameError.className = "error";
-        } else if(lname_field.validity.patternMismatch) {
-            lnameError.text = "Only lower and upper-case letters are allowed";
-            lnameError.className = "error";
-        } else {
-            lnameError.text = "";
-        }
-    });
-
-    
-</script>
 <body>
 
     <!-- HERE GOES NAVBAR -->
@@ -70,12 +95,12 @@
             </select>
 
             <label for="fname">First Name:
-                <input type="text" id="fname" name="fname" minlength="1" maxlength="15" pattern="[A-Z][a-z]*" required><br>
+                <input type="text" id="fname" name="fname" minlength="1" maxlength="15" pattern="[A-Za-z]*" required><br>
                 <p id="ferror" class="error"></p>
             </label>
 
             <label for="lname">Last Name: 
-                <input type="text" id="lname" name="lname" minlength="1" maxlength="15" pattern="[A-Z][a-z]*" required><br>
+                <input type="text" id="lname" name="lname" minlength="1" maxlength="15" pattern="[A-Za-z]*" required><br>
                 <p id="lerror" class="error"></p>
             </label>
 

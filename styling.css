@@ -39,4 +39,10 @@
 input:invalid {
     border-color: #900;
 }
+
+.error{
+    background-color: #900;
+    color: white;
+    width: fit-content;
+}
   
